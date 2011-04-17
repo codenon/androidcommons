@@ -42,6 +42,14 @@ public class SimpleLog {
 
 	/**
 	 * 
+	 * @param tr
+	 */
+	public void verbose(final Throwable tr) {
+		Log.println(Log.VERBOSE, tag, tr.getMessage() + '\n' + Log.getStackTraceString(tr));
+	}
+
+	/**
+	 * 
 	 * @param message
 	 */
 	public void debug(final String message) {
@@ -55,6 +63,14 @@ public class SimpleLog {
 	 */
 	public void debug(final String message, final Throwable tr) {
 		Log.println(Log.DEBUG, tag, message + '\n' + Log.getStackTraceString(tr));
+	}
+
+	/**
+	 * 
+	 * @param tr
+	 */
+	public void debug(final Throwable tr) {
+		Log.println(Log.DEBUG, tag, tr.getMessage() + '\n' + Log.getStackTraceString(tr));
 	}
 
 	/**
@@ -76,6 +92,14 @@ public class SimpleLog {
 
 	/**
 	 * 
+	 * @param tr
+	 */
+	public void info(final Throwable tr) {
+		Log.println(Log.INFO, tag, tr.getMessage() + '\n' + Log.getStackTraceString(tr));
+	}
+
+	/**
+	 * 
 	 * @param message
 	 */
 	public void warn(final String message) {
@@ -93,6 +117,14 @@ public class SimpleLog {
 
 	/**
 	 * 
+	 * @param tr
+	 */
+	public void warn(final Throwable tr) {
+		Log.println(Log.WARN, tag, tr.getMessage() + '\n' + Log.getStackTraceString(tr));
+	}
+
+	/**
+	 * 
 	 * @param message
 	 */
 	public void error(final String message) {
@@ -106,5 +138,13 @@ public class SimpleLog {
 	 */
 	public void error(final String message, final Throwable tr) {
 		Log.println(Log.ERROR, tag, message + '\n' + Log.getStackTraceString(tr));
+	}
+
+	/**
+	 * 
+	 * @param tr
+	 */
+	public void error(final Throwable tr) {
+		Log.println(Log.ERROR, tag, tr.getMessage() + '\n' + Log.getStackTraceString(tr));
 	}
 }
