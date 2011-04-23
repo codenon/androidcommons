@@ -1,0 +1,20 @@
+#summary Development with Maven.
+#labels Maven,Repository
+
+= Use Maven repository =
+
+To use Android Commons Maven repository just add next lines to the repositories section of your POM:
+{{{
+  <repository>
+    <id>androidcommons</id>
+    <name>Android Commons Repository</name>
+    <url>http://androidcommons.googlecode.com/svn/maven-repository/</url>
+    <releases>
+      <enabled>true</enabled>
+      <updatePolicy>never</updatePolicy>
+    </releases>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+  </repository>
+}}}
