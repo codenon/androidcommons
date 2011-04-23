@@ -5,7 +5,7 @@
 
 Android Commons has two Maven repositories:
  * *Releases repository* http://androidcommons.googlecode.com/svn/maven-repository/
- * *Snapshot repository* http://androidcommons.googlecode.com/svn/maven-snapshot-repository/
+ * *Snapshots repository* http://androidcommons.googlecode.com/svn/maven-snapshot-repository/
 
 To use Android Commons Maven repository just it to the repositories section of your POM:
 {{{
