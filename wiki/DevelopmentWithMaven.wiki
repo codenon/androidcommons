@@ -5,16 +5,27 @@
 
 To use Android Commons Maven repository just add next lines to the repositories section of your POM:
 {{{
-  <repository>
-    <id>androidcommons</id>
-    <name>Android Commons Repository</name>
-    <url>http://androidcommons.googlecode.com/svn/maven-repository/</url>
-    <releases>
-      <enabled>true</enabled>
-      <updatePolicy>never</updatePolicy>
-    </releases>
-    <snapshots>
-      <enabled>false</enabled>
-    </snapshots>
-  </repository>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  ...
+  <repositories>
+    ...
+    <repository>
+      <id>androidcommons</id>
+      <name>Android Commons Repository</name>
+      <url>http://androidcommons.googlecode.com/svn/maven-repository/</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    ...
+  <repositories>
+  ...
+</project>
 }}}
