@@ -3,7 +3,7 @@
 
 = Preface =
 
-First of all, you should to use [Maven Android Plugin http://code.google.com/p/maven-android-plugin/]
+First of all, you should to use [http://code.google.com/p/maven-android-plugin/ Maven Android Plugin]
 
 = Use Maven repository =
 
