@@ -1,6 +1,10 @@
 #summary Development with Maven.
 #labels Phase-Implementation,Featured
 
+= Preface =
+
+First of all, you should to use [Maven Android Plugin http://code.google.com/p/maven-android-plugin/]
+
 = Use Maven repository =
 
 Android Commons has two Maven repositories:
