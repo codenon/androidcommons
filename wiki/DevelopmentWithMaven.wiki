@@ -1,5 +1,5 @@
 #summary Development with Maven.
-#labels Maven,Repository
+#labels Phase-Implementation
 
 = Use Maven repository =
 
