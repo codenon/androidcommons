@@ -55,5 +55,23 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>googlecode.androidcommons.repo</id>
+			<url>dav:https://androidcommons.googlecode.com/svn/maven-repository/</url>
+		</repository>
+		<snapshotRepository>
+			<id>googlecode.androidcommons.snapshotrepo</id>
+			<url>dav:https://androidcommons.googlecode.com/svn/maven-snapshot-repository/</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
