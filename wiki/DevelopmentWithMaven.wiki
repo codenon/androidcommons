@@ -33,7 +33,7 @@ To use Android Commons Maven repository just add it to the repositories section 
       </snapshots>
     </repository>
     ...
-  <repositories>
+  </repositories>
   ...
 </project>
 }}}
