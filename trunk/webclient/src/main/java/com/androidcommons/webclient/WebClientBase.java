@@ -10,12 +10,21 @@ package com.androidcommons.webclient;
  * 
  */
 public abstract class WebClientBase {
+
 	protected final String endPoint;
 
+	/**
+	 * 
+	 * @param endPoint
+	 */
 	public WebClientBase(final String endPoint) {
 		this.endPoint = endPoint;
 	}
 
+	/**
+	 * 
+	 * @return endPoint
+	 */
 	public String getEndPoint() {
 		return endPoint;
 	}
