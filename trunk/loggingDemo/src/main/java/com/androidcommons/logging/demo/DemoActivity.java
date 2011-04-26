@@ -29,4 +29,29 @@ public class DemoActivity extends Activity {
 		super.onStart();
 		LOG.debug("onStart");
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		LOG.debug("onResume");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		LOG.debug("onPause");
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		LOG.debug("onStop");
+	}
+
+	@Override
+	protected void onDestroy() {
+		LOG.debug("onDestroy");
+		super.onDestroy();
+	}
+
 }
