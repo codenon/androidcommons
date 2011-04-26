@@ -23,4 +23,10 @@ public class DemoActivity extends Activity {
 
 		LOG.debug("onCreate");
 	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		LOG.debug("onStart");
+	}
 }
