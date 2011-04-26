@@ -55,6 +55,23 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.riedelcastro</groupId>
+				<artifactId>gcupload-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<uploads>
+						<upload>
+							<extension>jar</extension>
+						</upload>
+						<upload>
+							<postfix>src</postfix>
+							<extensions>tar.gz,zip</extensions>
+							<labels>Type-Source,Featured</labels>
+						</upload>
+					</uploads>
+				</configuration>
+			</plugin>
 		</plugins>
 		<extensions>
 			<extension>
@@ -71,11 +88,8 @@
 			<uniqueVersion>false</uniqueVersion>
 			<layout>default</layout>
 		</repository>
-		<!--<snapshotRepository>
-			<id>googlecode.androidcommons.snapshotrepo</id>
-			<url>dav:https://androidcommons.googlecode.com/svn/maven-snapshot-repository/</url>
-			<uniqueVersion>false</uniqueVersion>
-			<layout>default</layout>
-		</snapshotRepository>-->
+		<!--<snapshotRepository> <id>googlecode.androidcommons.snapshotrepo</id> 
+			<url>dav:https://androidcommons.googlecode.com/svn/maven-snapshot-repository/</url> 
+			<uniqueVersion>false</uniqueVersion> <layout>default</layout> </snapshotRepository> -->
 	</distributionManagement>
 </project>
