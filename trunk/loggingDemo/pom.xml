@@ -7,6 +7,21 @@
 	<version>0.0.1</version>
 	<packaging>apk</packaging>
 
+	<repositories>
+		<repository>
+			<id>androidcommons</id>
+			<name>Android Commons Repository</name>
+			<url>http://androidcommons.googlecode.com/svn/maven-repository/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
