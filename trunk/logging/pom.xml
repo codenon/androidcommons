@@ -6,6 +6,7 @@
 	<artifactId>logging</artifactId>
 	<version>0.0.1</version>
 	<packaging>apk</packaging>
+	<name>Logging</name>
 
 	<dependencies>
 		<dependency>
