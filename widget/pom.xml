@@ -6,6 +6,7 @@
 	<artifactId>widget</artifactId>
 	<version>0.0.1</version>
 	<packaging>apk</packaging>
+	<name>Widget</name>
 
 	<dependencies>
 		<dependency>

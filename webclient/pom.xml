@@ -6,6 +6,7 @@
 	<artifactId>webclient</artifactId>
 	<version>0.0.1</version>
 	<packaging>apk</packaging>
+	<name>WebClient</name>
 
 	<dependencies>
 		<dependency>
