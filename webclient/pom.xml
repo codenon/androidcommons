@@ -14,6 +14,13 @@
 			<version>1.5_r4</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- org.json.* -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20080701</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
