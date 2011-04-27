@@ -27,6 +27,17 @@ public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
 		super(endPoint);
 	}
 
+	/**
+	 * 
+	 * @param path
+	 * @param method
+	 * @param params
+	 * @return
+	 * @throws IOException
+	 * @throws HttpException
+	 * @throws JSONException
+	 * @throws JSONRPCException
+	 */
 	protected JSONObject call(final String path, final String method, final JSONObject params) throws IOException,
 			HttpException, JSONException, JSONRPCException {
 		final JSONObject jsRequest = new JSONObject();
@@ -44,6 +55,20 @@ public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
 			}
 		}
 		return jsResponse;
+	}
+
+	protected JSONObject call(final String path, final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return call(path, method, null);
+	}
+
+	protected JSONObject call(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return call(null, method, null);
+	}
+
+	protected JSONObject call(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return call(null, method, params);
 	}
 
 }
