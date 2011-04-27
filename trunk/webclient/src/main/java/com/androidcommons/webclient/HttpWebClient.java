@@ -5,7 +5,11 @@
  */
 package com.androidcommons.webclient;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
@@ -32,6 +36,11 @@ public class HttpWebClient extends WebClientBase {
 	public HttpWebClient(final String endPoint, final HttpClient httpClient) {
 		super(endPoint);
 		this.httpClient = httpClient;
+	}
+
+	@Override
+	public InputStream getInputStream(final String uri) throws IOException {
+		return httpClient.execute(new HttpGet(uri)).getEntity().getContent();
 	}
 
 }
