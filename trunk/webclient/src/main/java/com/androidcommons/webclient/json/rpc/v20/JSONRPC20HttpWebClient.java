@@ -171,4 +171,97 @@ public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
 	public String callString(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
 		return executeJSONRPC(null, method, null).getString(RESULT);
 	}
+
+	//
+	// Methods that return double
+	//
+
+	public double callDouble(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getDouble(RESULT);
+	}
+
+	public double callDouble(final String path, final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(path, method, null).getDouble(RESULT);
+	}
+
+	public double callDouble(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params).getDouble(RESULT);
+	}
+
+	public double callDouble(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, null).getDouble(RESULT);
+	}
+
+	//
+	// Methods that return long
+	//
+
+	public long callLong(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getLong(RESULT);
+	}
+
+	public long callLong(final String path, final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(path, method, null).getLong(RESULT);
+	}
+
+	public long callLong(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params).getLong(RESULT);
+	}
+
+	public long callLong(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, null).getLong(RESULT);
+	}
+
+	//
+	// Methods that return int
+	//
+
+	public int callInt(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getInt(RESULT);
+	}
+
+	public int callInt(final String path, final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(path, method, null).getInt(RESULT);
+	}
+
+	public int callInt(final String method, final JSONObject params) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(null, method, params).getInt(RESULT);
+	}
+
+	public int callInt(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, null).getInt(RESULT);
+	}
+
+	//
+	// Methods that return boolean
+	//
+
+	public boolean callBoolean(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getBoolean(RESULT);
+	}
+
+	public boolean callBoolean(final String path, final String method) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, null).getBoolean(RESULT);
+	}
+
+	public boolean callBoolean(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params).getBoolean(RESULT);
+	}
+
+	public boolean callBoolean(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, null).getBoolean(RESULT);
+	}
+
 }
