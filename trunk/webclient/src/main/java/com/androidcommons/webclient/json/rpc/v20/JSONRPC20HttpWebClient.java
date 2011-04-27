@@ -8,6 +8,7 @@ package com.androidcommons.webclient.json.rpc.v20;
 import java.io.IOException;
 
 import org.apache.http.HttpException;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +20,11 @@ import com.androidcommons.webclient.json.rpc.JSONRPCException;
  * 
  */
 public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
+
+	/**
+	 * 
+	 */
+	private static final String RESULT = "result";
 
 	/**
 	 * @param endPoint
@@ -38,8 +44,8 @@ public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
 	 * @throws JSONException
 	 * @throws JSONRPCException
 	 */
-	protected JSONObject call(final String path, final String method, final JSONObject params) throws IOException,
-			HttpException, JSONException, JSONRPCException {
+	protected JSONObject executeJSONRPC(final String path, final String method, final JSONObject params)
+			throws IOException, HttpException, JSONException, JSONRPCException {
 		final JSONObject jsRequest = new JSONObject();
 		jsRequest.put("jsonrpc", "2.0");
 		jsRequest.put("method", method);
@@ -57,18 +63,112 @@ public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
 		return jsResponse;
 	}
 
-	protected JSONObject call(final String path, final String method) throws IOException, HttpException, JSONException,
-			JSONRPCException {
-		return call(path, method, null);
-	}
-
-	protected JSONObject call(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
-		return call(null, method, null);
-	}
-
-	protected JSONObject call(final String method, final JSONObject params) throws IOException, HttpException,
+	protected JSONObject executeJSONRPC(final String path, final String method) throws IOException, HttpException,
 			JSONException, JSONRPCException {
-		return call(null, method, params);
+		return executeJSONRPC(path, method, null);
 	}
 
+	protected JSONObject executeJSONRPC(final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params);
+	}
+
+	protected JSONObject executeJSONRPC(final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(null, method, null);
+	}
+
+	//
+	// Methods that return java.lang.Object
+	//
+
+	public Object call(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).get(RESULT);
+	}
+
+	public Object call(final String path, final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(path, method, null).get(RESULT);
+	}
+
+	public Object call(final String method, final JSONObject params) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(null, method, params).get(RESULT);
+	}
+
+	public Object call(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, null).get(RESULT);
+	}
+
+	//
+	// Methods that return JSONObject
+	//
+
+	public JSONObject callJSONObject(final String path, final String method, final JSONObject params)
+			throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getJSONObject(RESULT);
+	}
+
+	public JSONObject callJSONObject(final String path, final String method) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, null).getJSONObject(RESULT);
+	}
+
+	public JSONObject callJSONObject(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params).getJSONObject(RESULT);
+	}
+
+	public JSONObject callJSONObject(final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(null, method, null).getJSONObject(RESULT);
+	}
+
+	//
+	// Methods that return JSONArray
+	//
+
+	public JSONArray callJSONArray(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getJSONArray(RESULT);
+	}
+
+	public JSONArray callJSONArray(final String path, final String method) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, null).getJSONArray(RESULT);
+	}
+
+	public JSONArray callJSONArray(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params).getJSONArray(RESULT);
+	}
+
+	public JSONArray callJSONArray(final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(null, method, null).getJSONArray(RESULT);
+	}
+
+	//
+	// Methods that return String
+	//
+
+	public String callString(final String path, final String method, final JSONObject params) throws IOException,
+			HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(path, method, params).getString(RESULT);
+	}
+
+	public String callString(final String path, final String method) throws IOException, HttpException, JSONException,
+			JSONRPCException {
+		return executeJSONRPC(path, method, null).getString(RESULT);
+	}
+
+	public String callString(final String method, final JSONObject params) throws IOException, HttpException,
+			JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, params).getString(RESULT);
+	}
+
+	public String callString(final String method) throws IOException, HttpException, JSONException, JSONRPCException {
+		return executeJSONRPC(null, method, null).getString(RESULT);
+	}
 }
