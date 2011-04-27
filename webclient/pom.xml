@@ -105,7 +105,7 @@
 									<summary>${project.name} sources bundle ${project.version}</summary>
 									<labels>
 										<label>Featured</label>
-										<label>Type-Sources</label>
+										<label>Type-Source</label>
 									</labels>
 								</upload>
 								<!--<upload>
@@ -121,7 +121,7 @@
 									<summary>${project.name} apk bundle ${project.version}</summary>
 									<labels>
 										<label>Featured</label>
-										<label>Type-Archive</label>
+										<label>Type-Package</label>
 									</labels>
 								</upload>
 							</uploads>
