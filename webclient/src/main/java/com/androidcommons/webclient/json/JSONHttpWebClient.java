@@ -30,7 +30,16 @@ public class JSONHttpWebClient extends HttpWebClient {
 		super(endPoint);
 	}
 
-	public JSONObject execute(final String path, final JSONObject jsRequest) throws IOException, HttpException,
+	/**
+	 * 
+	 * @param path
+	 * @param jsRequest
+	 * @return
+	 * @throws IOException
+	 * @throws HttpException
+	 * @throws JSONException
+	 */
+	public JSONObject executeJSON(final String path, final JSONObject jsRequest) throws IOException, HttpException,
 			JSONException {
 		final HttpPost httpRequest = newHttpPost(path);
 		httpRequest.setHeader("Content-Type", "application/json");
