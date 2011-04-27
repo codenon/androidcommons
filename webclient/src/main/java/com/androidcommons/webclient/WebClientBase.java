@@ -5,6 +5,8 @@
  */
 package com.androidcommons.webclient;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 
@@ -82,4 +84,12 @@ public abstract class WebClientBase {
 		}
 		return ret;
 	}
+
+	/**
+	 * 
+	 * @param url
+	 * @return
+	 * @throws IOException
+	 */
+	public abstract InputStream getInputStream(String uri) throws IOException;
 }
