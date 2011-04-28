@@ -57,7 +57,7 @@ public class JSONRPC20HttpWebClient extends JSONHttpWebClient {
 		if (jsResponse.has("error")) {
 			final JSONObject error = jsResponse.getJSONObject("error");
 			if (null != error) {
-				throw new JSONRPCException(error.getInt("code") + error.getString("message"));
+				throw new JSONRPCException(error.getInt("code") + " " + error.getString("message"));
 			}
 		}
 		return jsResponse;
