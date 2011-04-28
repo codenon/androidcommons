@@ -196,7 +196,7 @@ public class HttpWebClient extends WebClientBase {
 			throws ClientProtocolException, IOException, HttpException {
 		final HttpResponse response = httpClient.execute(request);
 		final int statusCode = response.getStatusLine().getStatusCode();
-		if (statusCode >= beginExpectedCode && statusCode < endExpectedCode) {
+		if (statusCode < beginExpectedCode || statusCode >= endExpectedCode) {
 			throw newHttpException(request, response);
 		}
 		return response;
