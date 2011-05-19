@@ -54,17 +54,22 @@ public abstract class WebClientBase {
 					retProtocol = baseUrl.getProtocol();
 				}
 
-				String retPath = retUrl.getPath();
-				if (retPath == null || retPath.length() == 0) {
-					retPath = baseUrl.getPath();
-				}
-
 				String retHost = retUrl.getHost();
 				if (retHost == null || retHost.length() == 0) {
 					retHost = baseUrl.getHost();
 				}
 
-				ret = new URL(retProtocol, retHost, retPath).toString();
+				int retPort = retUrl.getPort();
+				if (retPort == -1) {
+					retPort = baseUrl.getPort();
+				}
+
+				String retPath = retUrl.getPath();
+				if (retPath == null || retPath.length() == 0) {
+					retPath = baseUrl.getPath();
+				}
+
+				ret = new URL(retProtocol, retHost, retPort, retPath).toString();
 			} catch (final Exception e) {
 			}
 		}
