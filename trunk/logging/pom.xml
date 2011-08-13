@@ -5,7 +5,8 @@
 	<groupId>com.androidcommons</groupId>
 	<artifactId>logging</artifactId>
 	<version>0.0.1</version>
-	<packaging>apk</packaging>
+	<!--<packaging>apk</packaging>-->
+	<packaging>jar</packaging>
 	<name>Logging</name>
 
 	<dependencies>
@@ -23,7 +24,7 @@
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>maven-android-plugin</artifactId>
-				<version>2.9.0-beta-4</version>
+				<version>3.0.0-alpha-2</version>
 				<configuration>
 					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
 					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
@@ -42,8 +43,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -110,14 +111,14 @@
 										<label>Type-Docs</label>
 									</labels>
 								</upload>-->
-								<upload>
+								<!--<upload>
 									<file>${project.build.directory}/${project.groupId}.${project.artifactId}-${project.version}.${project.packaging}</file>
 									<summary>${project.name} apk bundle ${project.version}</summary>
 									<labels>
 										<label>Featured</label>
 										<label>Type-Package</label>
 									</labels>
-								</upload>
+								</upload>-->
 							</uploads>
 						</configuration>
 					</execution>
