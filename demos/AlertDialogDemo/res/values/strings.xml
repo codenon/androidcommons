@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, AlertDialogDemoActivity!</string>
     <string name="app_name">AlertDialog Demo</string>
+    <string name="dialog_title">Title</string>
+    <string name="dialog_message">This is a message</string>
 </resources>
