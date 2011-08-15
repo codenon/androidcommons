@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AlertDialog Demo</string>
-    <string name="dialog_title">Title</string>
+
+    <string name="ok_dialog">OK Dialog</string>
+    <string name="ok_cancel_dialog">OK/Cancel Dialog</string>
+    <string name="yes_no_dialog">Yes/No Dialog</string>
+    <string name="dialer_dialog">Dialer Dialog</string>
+    <string name="email_dialog">Email Dialog</string>
+    <string name="info_dialog">Info Dialog</string>
+    <string name="map_dialog">Map Dialog</string>
+
     <string name="dialog_message">This is a message</string>
 </resources>
