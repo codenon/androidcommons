@@ -18,11 +18,11 @@ import android.net.Uri;
  * @author Denis Migol
  * 
  */
-public class BitmapUtil {
+public final class BitmapUtil {
 	private BitmapUtil() {
 	}
 
-	public Bitmap decodeStream(final InputStream is, final Rect outPadding, final BitmapFactory.Options opts)
+	public static Bitmap decodeStream(final InputStream is, final Rect outPadding, final BitmapFactory.Options opts)
 			throws IOException {
 		try {
 			return BitmapFactory.decodeStream(is, null, opts);
@@ -36,7 +36,7 @@ public class BitmapUtil {
 		}
 	}
 
-	public Bitmap decodeStream(final ContentResolver resolver, final Uri uri, final BitmapFactory.Options opts)
+	public static Bitmap decodeStream(final ContentResolver resolver, final Uri uri, final BitmapFactory.Options opts)
 			throws IOException {
 		InputStream is = resolver.openInputStream(uri);
 		try {
