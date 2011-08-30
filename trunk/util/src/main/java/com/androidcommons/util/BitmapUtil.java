@@ -11,6 +11,7 @@ import java.io.InputStream;
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.net.Uri;
 
 /**
@@ -21,7 +22,8 @@ public class BitmapUtil {
 	private BitmapUtil() {
 	}
 
-	public Bitmap decodeStream(final InputStream is, final BitmapFactory.Options opts) throws IOException {
+	public Bitmap decodeStream(final InputStream is, final Rect outPadding, final BitmapFactory.Options opts)
+			throws IOException {
 		try {
 			return BitmapFactory.decodeStream(is, null, opts);
 		} catch (final OutOfMemoryError e) {
