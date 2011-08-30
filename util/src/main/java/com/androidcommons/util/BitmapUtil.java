@@ -21,6 +21,19 @@ public class BitmapUtil {
 	private BitmapUtil() {
 	}
 
+	public Bitmap decodeStream(final InputStream is, final BitmapFactory.Options opts) throws IOException {
+		try {
+			return BitmapFactory.decodeStream(is, null, opts);
+		} catch (final OutOfMemoryError e) {
+			System.gc();
+			final Bitmap bitmap = BitmapFactory.decodeStream(is, null, opts);
+			is.close();
+			return bitmap;
+		} finally {
+			is.close();
+		}
+	}
+
 	public Bitmap decodeStream(final ContentResolver resolver, final Uri uri, final BitmapFactory.Options opts)
 			throws IOException {
 		InputStream is = resolver.openInputStream(uri);
