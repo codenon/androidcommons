@@ -70,59 +70,41 @@
           			</execution>
         		</executions>
       		</plugin>
-			<plugin>
-				<groupId>com.googlecode.maven-gcu-plugin</groupId>
-				<artifactId>maven-gcu-plugin</artifactId>
-				<version>1.1</version>
-				<executions>
-					<execution>
-						<id>gcode-upload</id>
-						<!-- <phase>package</phase> default: deploy -->
-						<goals>
-							<goal>upload</goal>
-						</goals>
-						<configuration>
-							<!-- <serverId>gcode</serverId> default: googlecode -->
-							<failsOnError>true</failsOnError> <!-- default: false -->
-							<projectName>androidcommons</projectName> <!-- default: ${project.artifactId} -->
-							<uploads>
-								<upload>
-									<file>${project.build.directory}/${project.groupId}.${project.artifactId}-${project.version}.jar</file>
-									<summary>${project.name} jar bundle ${project.version}</summary>
-									<labels>
-										<label>Featured</label>
-										<label>Type-Archive</label>
-									</labels>
-								</upload>
-								<upload>
-									<file>${project.build.directory}/${project.groupId}.${project.artifactId}-${project.version}-sources.jar</file>
-									<summary>${project.name} sources bundle ${project.version}</summary>
-									<labels>
-										<label>Featured</label>
-										<label>Type-Source</label>
-									</labels>
-								</upload>
-								<!--<upload>
-									<file>${project.build.directory}/${project.artifactId}-${project.version}-javadoc.${project.packaging}</file>
-									<summary>${project.name} javadocs bundle ${project.version}</summary>
-									<labels>
-										<label>Featured</label>
-										<label>Type-Docs</label>
-									</labels>
-								</upload>-->
-								<!--<upload>
-									<file>${project.build.directory}/${project.groupId}.${project.artifactId}-${project.version}.${project.packaging}</file>
-									<summary>${project.name} apk bundle ${project.version}</summary>
-									<labels>
-										<label>Featured</label>
-										<label>Type-Package</label>
-									</labels>
-								</upload>-->
-							</uploads>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>com.googlecode.maven-gcu-plugin</groupId> -->
+<!-- 				<artifactId>maven-gcu-plugin</artifactId> -->
+<!-- 				<version>1.1</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>gcode-upload</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>upload</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<failsOnError>true</failsOnError> -->
+<!-- 							<projectName>androidcommons</projectName> -->
+<!-- 							<uploads> -->
+<!-- 								<upload> -->
+<!-- 									<file>${project.build.directory}/${project.groupId}.${project.artifactId}-${project.version}.jar</file> -->
+<!-- 									<summary>${project.name} jar bundle ${project.version}</summary> -->
+<!-- 									<labels> -->
+<!-- 										<label>Featured</label> -->
+<!-- 										<label>Type-Archive</label> -->
+<!-- 									</labels> -->
+<!-- 								</upload> -->
+<!-- 								<upload> -->
+<!-- 									<file>${project.build.directory}/${project.groupId}.${project.artifactId}-${project.version}-sources.jar</file> -->
+<!-- 									<summary>${project.name} sources bundle ${project.version}</summary> -->
+<!-- 									<labels> -->
+<!-- 										<label>Featured</label> -->
+<!-- 										<label>Type-Source</label> -->
+<!-- 									</labels> -->
+<!-- 								</upload> -->
+<!-- 							</uploads> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 		<extensions>
 			<extension>
