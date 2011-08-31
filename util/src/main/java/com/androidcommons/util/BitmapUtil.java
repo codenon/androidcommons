@@ -22,6 +22,15 @@ public final class BitmapUtil {
 	private BitmapUtil() {
 	}
 
+	public static Bitmap decodeFile(final String pathName) {
+		try {
+			return BitmapFactory.decodeFile(pathName);
+		} catch (final OutOfMemoryError e) {
+			System.gc();
+			return BitmapFactory.decodeFile(pathName);
+		}
+	}
+
 	public static Bitmap decodeStream(final InputStream is, final Rect outPadding, final BitmapFactory.Options opts)
 			throws IOException {
 		try {
