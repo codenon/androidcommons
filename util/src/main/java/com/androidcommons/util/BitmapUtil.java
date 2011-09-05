@@ -128,8 +128,23 @@ public final class BitmapUtil {
 
 		final double scale = Math.max((double) w / width, (double) h / height);
 		final BitmapFactory.Options ret = new BitmapFactory.Options();
-		ret.outHeight = (int) (h * scale);
-		ret.outWidth = (int) (w * scale);
+		ret.outHeight = (int) (h / scale);
+		ret.outWidth = (int) (w / scale);
 		return ret;
+	}
+
+	public static int getSample(final BitmapFactory.Options sourceSizes, final int width, final int height) {
+		int w = sourceSizes.outWidth;
+		int h = sourceSizes.outHeight;
+
+		int sample = 1;
+		while (true) {
+			if (w / 2 < width || h / 2 < height)
+				break;
+			w /= 2;
+			h /= 2;
+			sample <<= 1;
+		}
+		return sample;
 	}
 }
