@@ -126,10 +126,10 @@ public final class BitmapUtil {
 		final int w = sourceSizes.outWidth;
 		final int h = sourceSizes.outHeight;
 
-		final double scale = Math.max(Math.floor(w / width), Math.floor(h / height));
+		final double scale = Math.min(Math.floor(w / width), Math.floor(h / height));
 		final BitmapFactory.Options ret = new BitmapFactory.Options();
-		ret.outHeight = (int) (w * scale);
-		ret.outWidth = (int) (h * scale);
+		ret.outHeight = (int) (h * scale);
+		ret.outWidth = (int) (w * scale);
 		return ret;
 	}
 }
