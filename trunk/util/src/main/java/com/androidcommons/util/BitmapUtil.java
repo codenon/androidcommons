@@ -120,4 +120,16 @@ public final class BitmapUtil {
 
 		return roundedSize;
 	}
+
+	public static BitmapFactory.Options getScaledSizes(final BitmapFactory.Options sourceSizes, final int width,
+			final int height) {
+		final int w = sourceSizes.outWidth;
+		final int h = sourceSizes.outHeight;
+
+		final double scale = Math.max(Math.floor(w / width), Math.floor(h / height));
+		final BitmapFactory.Options ret = new BitmapFactory.Options();
+		ret.outHeight = (int) (w * scale);
+		ret.outWidth = (int) (h * scale);
+		return ret;
+	}
 }
