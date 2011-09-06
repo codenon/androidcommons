@@ -33,6 +33,15 @@ public final class BitmapUtil {
 		}
 	}
 
+	public static Bitmap decodeFile(final String pathName, final BitmapFactory.Options opts) {
+		try {
+			return BitmapFactory.decodeFile(pathName, opts);
+		} catch (final OutOfMemoryError e) {
+			System.gc();
+			return BitmapFactory.decodeFile(pathName, opts);
+		}
+	}
+
 	public static Bitmap decodeStream(final InputStream is, final Rect outPadding, final BitmapFactory.Options opts)
 			throws IOException {
 		try {
@@ -146,5 +155,17 @@ public final class BitmapUtil {
 			sample <<= 1;
 		}
 		return sample;
+	}
+
+	public static Bitmap decodeSampledFile(final String pathName, final int width, final int height) {
+		BitmapFactory.Options opts = new BitmapFactory.Options();
+		opts.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(pathName, opts);
+
+		final int sample = getSample(opts, width, height);
+		opts = new BitmapFactory.Options();
+		opts.inSampleSize = sample;
+
+		return decodeFile(pathName, opts);
 	}
 }
