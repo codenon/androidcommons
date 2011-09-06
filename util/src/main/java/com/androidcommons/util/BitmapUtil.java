@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
@@ -39,6 +40,24 @@ public final class BitmapUtil {
 		} catch (final OutOfMemoryError e) {
 			System.gc();
 			return BitmapFactory.decodeFile(pathName, opts);
+		}
+	}
+
+	public static Bitmap decodeResource(final Resources res, final int id) {
+		try {
+			return BitmapFactory.decodeResource(res, id);
+		} catch (final OutOfMemoryError e) {
+			System.gc();
+			return BitmapFactory.decodeResource(res, id);
+		}
+	}
+
+	public static Bitmap decodeResource(final Resources res, final int id, final BitmapFactory.Options opts) {
+		try {
+			return BitmapFactory.decodeResource(res, id, opts);
+		} catch (final OutOfMemoryError e) {
+			System.gc();
+			return BitmapFactory.decodeResource(res, id, opts);
 		}
 	}
 
@@ -167,5 +186,17 @@ public final class BitmapUtil {
 		opts.inSampleSize = sample;
 
 		return decodeFile(pathName, opts);
+	}
+
+	public static Bitmap decodeSampledResource(final Resources res, final int id, final int width, final int height) {
+		BitmapFactory.Options opts = new BitmapFactory.Options();
+		opts.inJustDecodeBounds = true;
+		BitmapFactory.decodeResource(res, id, opts);
+
+		final int sample = getSample(opts, width, height);
+		opts = new BitmapFactory.Options();
+		opts.inSampleSize = sample;
+
+		return decodeResource(res, id, opts);
 	}
 }
