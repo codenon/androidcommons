@@ -7,6 +7,7 @@ package com.androidcommons.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 
 import android.content.ContentResolver;
 import android.content.res.Resources;
@@ -24,6 +25,10 @@ public final class BitmapUtil {
 	}
 
 	private static final int UNCONSTRAINED = -1;
+
+	//
+	// BitmapFactory.decodeXXX wrappers
+	//
 
 	public static Bitmap decodeFile(final String pathName) {
 		try {
@@ -91,6 +96,10 @@ public final class BitmapUtil {
 		}
 	}
 
+	//
+	// Methods for calculation sample
+	//
+
 	private static int computeInitialSampleSize(final BitmapFactory.Options options, final int minSideLength,
 			final int maxNumOfPixels) {
 		final double w = options.outWidth;
@@ -149,18 +158,6 @@ public final class BitmapUtil {
 		return roundedSize;
 	}
 
-	public static BitmapFactory.Options getScaledSizes(final BitmapFactory.Options sourceSizes, final int width,
-			final int height) {
-		final int w = sourceSizes.outWidth;
-		final int h = sourceSizes.outHeight;
-
-		final double scale = Math.max((double) w / width, (double) h / height);
-		final BitmapFactory.Options ret = new BitmapFactory.Options();
-		ret.outHeight = (int) (h / scale);
-		ret.outWidth = (int) (w / scale);
-		return ret;
-	}
-
 	public static int getSample(final BitmapFactory.Options sourceSizes, final int width, final int height) {
 		int w = sourceSizes.outWidth;
 		int h = sourceSizes.outHeight;
@@ -175,6 +172,42 @@ public final class BitmapUtil {
 		}
 		return sample;
 	}
+
+	//
+	// scale
+	//
+
+	public static BitmapFactory.Options getScaledSizes(final BitmapFactory.Options srcSizes, final int dstWidth,
+			final int dstHeight) {
+		return getScaledSizes(srcSizes.outWidth, srcSizes.outHeight, dstWidth, dstHeight);
+	}
+
+	public static BitmapFactory.Options getScaledSizes(final int srcWidth, final int srcHeight, final int dstWidth,
+			final int dstHeight) {
+		final double scale = Math.max((double) srcWidth / dstWidth, (double) srcHeight / dstHeight);
+		final BitmapFactory.Options ret = new BitmapFactory.Options();
+		ret.outWidth = (int) (srcWidth / scale);
+		ret.outHeight = (int) (srcHeight / scale);
+		return ret;
+	}
+
+	//
+	// equals sizes
+	//
+
+	// private static boolean equalsSizes(final BitmapFactory.Options sizes1,
+	// final BitmapFactory.Options sizes2) {
+	// return (sizes1.outWidth == sizes2.outWidth) && (sizes1.outHeight ==
+	// sizes2.outHeight);
+	// }
+
+	public static boolean equalsSizes(final int width1, final int height1, final int width2, final int height2) {
+		return width1 == width2 && height1 == height2;
+	}
+
+	//
+	//
+	//
 
 	public static Bitmap decodeSampledFile(final String pathName, final int width, final int height) {
 		BitmapFactory.Options opts = new BitmapFactory.Options();
@@ -198,5 +231,54 @@ public final class BitmapUtil {
 		opts.inSampleSize = sample;
 
 		return decodeResource(res, id, opts);
+	}
+
+	//
+	// decode scaled bitmaps - methods for avoiding OOM
+	//
+
+	public static Bitmap createScaledBitmap(final Bitmap bitmap, final int dstWidth, final int dstHeight,
+			final boolean recycleBitmap) {
+		final Bitmap ret;
+		if (bitmap != null) {
+			if (!equalsSizes(bitmap.getWidth(), bitmap.getHeight(), dstWidth, dstHeight)) {
+				final BitmapFactory.Options sizes = getScaledSizes(bitmap.getWidth(), bitmap.getHeight(), dstWidth,
+						dstHeight);
+				ret = Bitmap.createScaledBitmap(bitmap, sizes.outWidth, sizes.outHeight, true);
+				if (recycleBitmap)
+					bitmap.recycle();
+			} else {
+				ret = bitmap;
+			}
+		} else {
+			ret = null;
+		}
+		return ret;
+	}
+
+	public static Bitmap decodeScaledResource(final Resources res, final int id, final int maxSize) {
+		return createScaledBitmap(decodeResource(res, id), maxSize, maxSize, true);
+	}
+
+	//
+	// other utilities
+	//
+
+	public static boolean setInNativeAllocTrue(final BitmapFactory.Options options) {
+		boolean ret = false;
+		if (options != null) {
+			final Class<?> clazz = options.getClass();
+			try {
+				final Field inNativeAlloc = clazz.getDeclaredField("inNativeAlloc");
+				inNativeAlloc.setAccessible(true);
+				inNativeAlloc.setBoolean(options, Boolean.TRUE);
+				ret = true;
+			} catch (final SecurityException e) {
+			} catch (final NoSuchFieldException e) {
+			} catch (final IllegalArgumentException e) {
+			} catch (final IllegalAccessException e) {
+			}
+		}
+		return ret;
 	}
 }
