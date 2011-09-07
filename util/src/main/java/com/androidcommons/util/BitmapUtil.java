@@ -177,6 +177,12 @@ public final class BitmapUtil {
 	// scale
 	//
 
+	public static double computeScale(final int srcWidth, final int srcHeight, final int dstWidth, final int dstHeight) {
+		final double scaleWidth = dstWidth == UNCONSTRAINED ? 1.0 : (double) srcWidth / dstWidth;
+		final double scaleHeight = dstHeight == UNCONSTRAINED ? 1.0 : (double) srcHeight / dstHeight;
+		return Math.max(scaleWidth, scaleHeight);
+	}
+
 	public static BitmapFactory.Options getScaledSizes(final BitmapFactory.Options srcSizes, final int dstWidth,
 			final int dstHeight) {
 		return getScaledSizes(srcSizes.outWidth, srcSizes.outHeight, dstWidth, dstHeight);
@@ -184,10 +190,19 @@ public final class BitmapUtil {
 
 	public static BitmapFactory.Options getScaledSizes(final int srcWidth, final int srcHeight, final int dstWidth,
 			final int dstHeight) {
-		final double scale = Math.max((double) srcWidth / dstWidth, (double) srcHeight / dstHeight);
+		final double scale = computeScale(srcWidth, srcHeight, dstWidth, dstHeight);
+		return getScaledSizes(srcWidth, srcHeight, scale);
+	}
+
+	public static BitmapFactory.Options getScaledSizes(final int srcWidth, final int srcHeight, final double scale) {
 		final BitmapFactory.Options ret = new BitmapFactory.Options();
-		ret.outWidth = (int) (srcWidth / scale);
-		ret.outHeight = (int) (srcHeight / scale);
+		if (scale != 1.0) {
+			ret.outWidth = (int) (srcWidth / scale);
+			ret.outHeight = (int) (srcHeight / scale);
+		} else {
+			ret.outWidth = srcWidth;
+			ret.outHeight = srcHeight;
+		}
 		return ret;
 	}
 
